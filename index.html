@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universidad Nacional - Registro de Estudiante</title>
+    <style>
+        /* ======= ESTILOS GENERALES ======= */
+        :root {
+            --primary-color: #003366; /* Azul institucional */
+            --secondary-color: #e8effa; /* Fondo claro */
+            --accent-color: #f4b400; /* Color acento (dorado) */
+            --text-color: #333;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-family);
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ======= ENCABEZADO ======= */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        header img {
+            width: 80px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            display: inline-block;
+            font-size: 28px;
+            margin: 0;
+            vertical-align: middle;
+        }
+
+        /* ======= CONTENEDOR PRINCIPAL ======= */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .form-container {
+            background: white;
+            padding: 40px 50px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            max-width: 700px;
+            width: 100%;
+            border-top: 6px solid var(--accent-color);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+
+        /* ======= CAMPOS DEL FORMULARIO ======= */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(0, 51, 102, 0.3);
+            outline: none;
+        }
+
+        /* ======= BOTÓN ======= */
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #00264d;
+        }
+
+        /* ======= PIE DE PÁGINA ======= */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        /* ======= ADAPTACIÓN LAPTOP ======= */
+        @media (max-width: 900px) {
+            .form-container {
+                padding: 30px;
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ======= ENCABEZADO UNIVERSITARIO ======= -->
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Logo_Universidad_Nacional_de_Colombia.png" alt="Logo Universidad">
+        <h1>Universidad Nacional</h1>
+    </header>
+
+    <!-- ======= CUERPO PRINCIPAL ======= -->
+    <div class="main-content">
+        <div class="form-container">
+            <h2>Formulario de Registro de Estudiante</h2>
+
+            <form id="registrationForm" method="POST" action="register.php">
+                <div class="form-group">
+                    <label for="id_estudiante">ID Estudiantil:</label>
+                    <input type="text" id="id_estudiante" name="id_estudiante" required placeholder="Ej: 2025-00123">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Nombre Completo:</label>
+                    <input type="text" id="name" name="name" required placeholder="Ej: Juan Pérez">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico Institucional:</label>
+                    <input type="email" id="email" name="email" required placeholder="Ej: juan.perez@unal.edu.co">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Número de Teléfono:</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Ej: +57 300 123 4567">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Dirección de Residencia:</label>
+                    <input type="text" id="address" name="address" placeholder="Ej: Calle 45 #20-10, Bogotá">
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Fecha de Nacimiento:</label>
+                    <input type="date" id="dob" name="dob">
+                </div>
+
+                <div class="form-group">
+                    <label for="carrera">Carrera:</label>
+                    <select id="carrera" name="carrera" required>
+                        <option value="">Selecciona tu carrera</option>
+                        <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+                        <option value="Ingeniería Civil">Ingeniería Civil</option>
+                        <option value="Derecho">Derecho</option>
+                        <option value="Medicina">Medicina</option>
+                        <option value="Arquitectura">Arquitectura</option>
+                        <option value="Administración">Administración</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn">Registrar Estudiante</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ======= PIE DE PÁGINA ======= -->
+    <footer>
+        © 2025 Universidad Nacional - Departamento de Admisiones | Todos los derechos reservados
+    </footer>
+</body>
+</html>
+
